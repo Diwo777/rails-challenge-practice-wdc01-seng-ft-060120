@@ -1,0 +1,19 @@
+<h1> <%= @company.name %> </h1>
+
+<div id="list_of_offices"> 
+<ul>
+<% @company.offices.each  do |office| %>
+
+<li> <%= "#{office.building.name} - #{office.floor}" %> </li>
+<%end %>
+</ul>
+</div>
+
+<div id="list_of_employees">
+<h3> List of employees </h3>
+<ul>
+<% @company.employees.each do |employee| %>
+<li> <%= link_to employee.name, employee_path(employee.id) %> </li>
+<%end %>
+</ul>
+</div>
