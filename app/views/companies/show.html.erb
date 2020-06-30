@@ -4,7 +4,7 @@
 <ul>
 <% @company.offices.each  do |office| %>
 
-<li> <%= "#{office.building.name} - #{office.floor}" %> </li>
+<li> <%= link_to "#{office.building.name} - #{office.floor}", building_path(office.building.id) %> </li>
 <%end %>
 </ul>
 </div>
@@ -13,7 +13,17 @@
 <h3> List of employees </h3>
 <ul>
 <% @company.employees.each do |employee| %>
-<li> <%= link_to employee.name, employee_path(employee.id) %> </li>
+<li> <%= link_to employee.name, employee_path(employee.id) %> - <%= link_to "Remove", employee_path(employee.id), method: :delete, data: {confirm: "Are you sure?"} %> </li>
 <%end %>
 </ul>
+</div>
+
+<div id="other_info">
+<h3> Total Rent Being Paid: $<%= @company.total_rent %> </h3>
+</div>
+
+<div id="actions">
+    <%= link_to "View All Companies", companies_path %><br>
+    <%= link_to "View All Buildings", buildings_path %><br>
+
 </div>

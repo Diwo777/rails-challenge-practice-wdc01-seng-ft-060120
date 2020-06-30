@@ -13,8 +13,11 @@ class BuildingsController < ApplicationController
     end
 
     def update
-        @building.update(building_params)
-        redirect_to building_path(@building.id)
+        if @building.update(building_params)
+            redirect_to building_path(@building.id)
+        else
+            render :edit
+        end 
     end 
 
     private 
