@@ -1,0 +1,11 @@
+<h1>All Buildings</h1>
+<br>
+
+<div id="list_of_buldings">
+    <ul>
+        <% @buildings.each do |building| %>
+            <li><%= link_to building.name, building_path(building.id) %> </li>
+        <% end %>
+    </ul>
+</div>
+

@@ -1,0 +1,25 @@
+<h1><%= @building.name %> </h1>
+
+<div id="list_of_companies">
+    <ul>
+        <% @building.unique_companies.each do |company| %>
+            <li><%= link_to company.name, company_path(company.id) %></li>
+        <% end %>
+    </ul>
+</div>
+
+<div id="building_statistics">
+    <h4>Floors Available for Rent:</h4>
+        <ul>
+            <% @building.number_of_floors_available.each do |floor| %>
+                <li><%= floor %></li>
+            <% end %>
+        </ul>
+    <br>
+    <strong>Total Rent Income: $<%= @building.total_rent %></strong>
+</div>
+<br>
+<div id="actions">
+    <%= link_to "Update Building", edit_building_path %><br>
+    <%= link_to "View All Buildings", buildings_path %> 
+</div>
